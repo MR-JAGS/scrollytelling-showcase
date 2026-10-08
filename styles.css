@@ -247,3 +247,107 @@ button { font: inherit; color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .scroll-hint__mouse span { animation: none; }
 }
+
+/* ============================================================
+   PACK CONVERSIÓN — sticky CTA, oferta, prueba social, lead, toast
+   ============================================================ */
+.offer-ribbon {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12.5px; font-weight: 700;
+  color: #fff; background: var(--accent-soft);
+  border: 1px solid var(--accent); border-radius: 999px;
+  padding: 8px 16px; margin-bottom: 16px;
+  box-shadow: 0 0 24px -6px var(--accent);
+}
+.offer-ribbon[hidden] { display: none; }
+
+/* Sticky CTA: píldora inferior, aparece al salir del hero */
+.sticky-cta {
+  position: fixed; left: 50%; bottom: 16px; transform: translate(-50%, 140%);
+  z-index: 40; display: flex; align-items: center; gap: 16px;
+  background: rgba(10, 10, 15, 0.86); border: 1px solid var(--stroke);
+  border-radius: 999px; padding: 10px 10px 10px 22px;
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  max-width: 94vw;
+}
+.sticky-cta.is-visible { transform: translate(-50%, 0); }
+.sticky-cta__info b { display: block; font-size: 16px; font-weight: 800; white-space: nowrap; }
+.sticky-cta__info span { font-size: 11px; color: var(--accent); font-weight: 700; white-space: nowrap; }
+.sticky-cta__btn { padding: 11px 22px; font-size: 14px; white-space: nowrap; }
+
+/* Prueba social + confianza */
+.proof { padding: 12vh clamp(20px, 6vw, 80px); max-width: 1100px; margin: 0 auto; }
+.proof h2 { font-size: clamp(28px, 4vw, 46px); letter-spacing: -0.03em; margin-bottom: 26px; text-shadow: 0 2px 30px rgba(0,0,0,0.5); }
+.proof__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.proof-card {
+  background: var(--card); border: 1px solid var(--stroke); border-radius: 18px; padding: 22px;
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+}
+.proof-card .stars { color: #ffc531; letter-spacing: 2px; font-size: 14px; margin-bottom: 10px; }
+.proof-card p { font-size: 14.5px; line-height: 1.6; color: rgba(245,245,247,0.85); margin-bottom: 14px; }
+.proof-card footer { font-size: 12.5px; color: var(--text-dim); }
+.proof-card footer b { color: #fff; }
+.trust { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 26px; }
+.trust > div { display: flex; gap: 12px; align-items: center; border: 1px solid var(--stroke); border-radius: 14px; padding: 14px; background: rgba(255,255,255,0.03); }
+.trust i { font-style: normal; font-size: 22px; }
+.trust b { display: block; font-size: 13.5px; }
+.trust span { font-size: 11.5px; color: var(--text-dim); }
+
+/* Captación de leads */
+.lead { padding: 8vh clamp(20px, 6vw, 80px) 12vh; display: flex; justify-content: center; }
+.lead__card {
+  width: min(94vw, 620px); text-align: center;
+  background: var(--card); border: 1px solid var(--accent); border-radius: 26px;
+  padding: clamp(28px, 4vw, 48px);
+  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 0 80px -30px var(--accent), 0 40px 100px -30px rgba(0,0,0,0.7);
+}
+.lead__card h2 { font-size: clamp(26px, 3.6vw, 40px); letter-spacing: -0.03em; margin-bottom: 8px; }
+.lead__sub { color: var(--text-dim); margin-bottom: 20px; line-height: 1.6; }
+.stock__bar { height: 8px; border-radius: 99px; background: rgba(255,255,255,0.1); overflow: hidden; }
+.stock__bar span { display: block; height: 100%; background: var(--accent); border-radius: 99px; transition: width 0.6s ease; }
+.stock p { font-size: 12.5px; font-weight: 700; color: var(--accent); margin: 8px 0 18px; }
+.countdown { display: flex; gap: 10px; justify-content: center; margin-bottom: 22px; }
+.countdown div { min-width: 64px; border: 1px solid var(--stroke); border-radius: 14px; padding: 10px 6px; background: rgba(255,255,255,0.03); }
+.countdown b { display: block; font-size: 24px; font-variant-numeric: tabular-nums; }
+.countdown span { font-size: 10.5px; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; }
+.lead__form { display: grid; gap: 10px; }
+.lead__form input {
+  background: rgba(255,255,255,0.06); border: 1px solid var(--stroke); border-radius: 14px;
+  padding: 14px 16px; color: #fff; font: inherit; font-size: 15px; outline: none;
+  transition: border-color 0.2s; width: 100%;
+}
+.lead__form input:focus { border-color: var(--accent); }
+.lead__form input.is-error { border-color: #ff5d5d; }
+.lead__alt { margin-top: 14px; font-size: 13.5px; color: var(--text-dim); }
+.lead__alt a { color: #fff; font-weight: 700; text-decoration: underline; }
+.lead__success { margin-top: 14px; font-size: 14px; font-weight: 700; color: #2ecc71; }
+.lead__success[hidden] { display: none; }
+
+/* Toast de prueba social */
+.toast {
+  position: fixed; left: 14px; bottom: 12px; z-index: 40;
+  display: flex; gap: 12px; align-items: center;
+  background: rgba(10, 10, 15, 0.9); border: 1px solid var(--stroke); border-radius: 16px;
+  padding: 12px 16px 12px 12px; max-width: min(88vw, 330px);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5); cursor: pointer;
+  transform: translateY(140%); opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s;
+}
+.toast.is-visible { transform: none; opacity: 1; }
+.toast[hidden] { display: none; }
+.toast__avatar {
+  width: 38px; height: 38px; border-radius: 50%; background: var(--accent);
+  color: #fff; font-weight: 800; display: flex; align-items: center; justify-content: center; flex: none;
+}
+.toast b { font-size: 13px; display: block; }
+.toast span { font-size: 12px; color: var(--text-dim); }
+.toast .stars { color: #ffc531; font-size: 11px; letter-spacing: 1px; }
+
+@media (max-width: 720px) {
+  .sticky-cta__info span { display: none; }
+  .sticky-cta { padding: 8px 8px 8px 16px; gap: 10px; }
+}

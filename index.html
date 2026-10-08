@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Framework scrollytelling data-driven estilo Apple — Canvas 60FPS + GSAP + Lenis" />
   <title>Scrollytelling Framework — Showcase Interactivo</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="VÉRTICE GT-R — Scrollytelling Showcase" />
+  <meta property="og:description" content="Descubre el producto en una experiencia cinematográfica que reacciona a tu scroll." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="VÉRTICE GT-R — Scrollytelling Showcase" />
+  <meta name="twitter:description" content="Descubre el producto en una experiencia cinematográfica que reacciona a tu scroll." />
+  <script type="application/ld+json" id="productSchema">{}</script>
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -37,6 +45,12 @@
     </div>
   </header>
 
+  <!-- Sticky CTA: aparece al salir del hero -->
+  <aside class="sticky-cta" id="stickyCta" aria-label="Acción rápida">
+    <div class="sticky-cta__info"><b id="stickyPrice"></b><span id="stickyOffer"></span></div>
+    <a class="btn btn--primary sticky-cta__btn" id="stickyBtn" href="#contacto">Reservar</a>
+  </aside>
+
   <!-- Preloader / buffer de assets -->
   <div class="preloader" id="preloader" role="status" aria-live="polite">
     <div class="preloader__card">
@@ -58,16 +72,20 @@
   <!-- Crédito de fotografía -->
   <div class="photo-credit" id="photoCredit">Fotografía · Unsplash</div>
 
+  <!-- Toast de prueba social -->
+  <div class="toast" id="proofToast" hidden></div>
+
   <!-- Contenido narrativo por encima del canvas (z-index 10) -->
   <main class="scroll-content" id="scrollContent">
 
     <!-- HERO: se renderiza desde PRODUCT_DATA -->
     <section class="hero" id="heroSection">
       <p class="kicker" id="heroKicker"></p>
+      <p class="offer-ribbon" id="offerRibbon" hidden></p>
       <h1 class="hero__title" id="heroTitle"></h1>
       <p class="hero__subtitle" id="heroSubtitle"></p>
       <div class="hero__cta-row">
-        <a class="btn btn--primary" href="#narrativa" id="heroCta"></a>
+        <a class="btn btn--primary" href="#contacto" id="heroCta"></a>
         <span class="hero__price" id="heroPrice"></span>
       </div>
       <div class="hero__specs" id="heroSpecs"></div>
@@ -79,6 +97,40 @@
 
     <!-- NARRATIVA: waypoints generados dinámicamente desde PRODUCT_DATA.sections -->
     <div class="narrative" id="narrative"></div>
+
+    <!-- PRUEBA SOCIAL: testimonios + sellos de confianza (data-driven) -->
+    <section class="proof" id="testimonios">
+      <p class="kicker">Prueba social</p>
+      <h2 id="proofTitle">Lo que dicen los que ya lo viven</h2>
+      <div class="proof__grid" id="proofGrid"></div>
+      <div class="trust" id="trustRow"></div>
+    </section>
+
+    <!-- CAPTACIÓN: oferta + countdown + formulario a WhatsApp -->
+    <section class="lead" id="contacto">
+      <div class="lead__card">
+        <p class="kicker">Oferta limitada</p>
+        <h2 id="leadTitle"></h2>
+        <p class="lead__sub" id="leadSub"></p>
+        <div class="stock">
+          <div class="stock__bar"><span id="stockFill"></span></div>
+          <p id="stockLabel"></p>
+        </div>
+        <div class="countdown" id="countdownBox">
+          <div><b id="cdD">00</b><span>días</span></div>
+          <div><b id="cdH">00</b><span>horas</span></div>
+          <div><b id="cdM">00</b><span>min</span></div>
+          <div><b id="cdS">00</b><span>seg</span></div>
+        </div>
+        <form class="lead__form" id="leadForm" novalidate>
+          <input id="leadName" type="text" placeholder="Tu nombre" autocomplete="name" required />
+          <input id="leadPhone" type="tel" placeholder="Tu teléfono / WhatsApp" autocomplete="tel" required />
+          <button class="btn btn--primary" type="submit" id="leadSubmit">Quiero que me contacten</button>
+        </form>
+        <p class="lead__alt">¿Prefieres hablar ya? <a id="leadCall" href="tel:+34600123123">Llamar ahora</a></p>
+        <p class="lead__success" id="leadSuccess" hidden></p>
+      </div>
+    </section>
 
     <!-- SPECS FINALES + FOOTER -->
     <section class="finale" id="finaleSection">

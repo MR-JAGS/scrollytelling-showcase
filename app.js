@@ -32,6 +32,33 @@ const PRODUCT_DATA = {
     price: "€189.900",
     priceNote: "Desde · impuestos incl.",
     cta: "Reservar prueba",
+    // ⚙️ CONVERSIÓN — edita estos valores con tus datos reales:
+    contact: {
+      whatsapp: "", // ← TU NÚMERO en formato internacional sin "+" (ej. "34600123123"). Vacío = modo demo.
+      phoneDisplay: "+34 600 123 123",
+      phoneHref: "tel:+34600123123",
+      ctaLabel: "Reservar prueba",
+      headline: "Siente los 720 CV en persona",
+      sub: "Déjanos tu nombre y teléfono y te llamamos hoy mismo para agendar tu prueba privada de 20 minutos. Sin compromiso.",
+    },
+    offer: { badge: "Lanzamiento · Solo quedan 3 de 8 unidades", unitsTotal: 8, unitsLeft: 3, deadline: "2026-12-31T23:59:59" },
+    rating: { value: "4.9", count: "214" },
+    testimonials: [
+      { stars: 5, text: "La prueba de 20 minutos me vendió el coche. El modo pista es de otro planeta y el asesor, impecable.", name: "Carlos M.", place: "Madrid" },
+      { stars: 5, text: "Entrega en 3 semanas, tal como prometieron. El head-up display con telemetría es adictivo.", name: "Lucía F.", place: "Barcelona" },
+      { stars: 5, text: "Vengo de un alemán de 500 CV y no hay color. Financiación clara, sin letra pequeña.", name: "Andrés R.", place: "Valencia" },
+    ],
+    trust: [
+      { icon: "🛡️", title: "Garantía 4 años", sub: "Motor e híbrido incluidos" },
+      { icon: "💳", title: "Financiación a medida", sub: "Desde 890 €/mes" },
+      { icon: "🚚", title: "Entrega en 30 días", sub: "En toda la península" },
+      { icon: "🔑", title: "Prueba sin compromiso", sub: "20 min con instructor" },
+    ],
+    socialProof: [
+      { name: "María G.", detail: "reservó una prueba privada", time: "hace 2 h" },
+      { name: "Javier T.", detail: "pidió financiación a medida", time: "hace 5 h" },
+      { name: "Sofía L.", detail: "configuró su Vértice GT-R", time: "ayer" },
+    ],
     accent: "#ff4d2e",
     totalFrames: 72,
     // Secuencia fotográfica real (verificada, alta resolución). El canvas
@@ -73,6 +100,33 @@ const PRODUCT_DATA = {
     price: "€1.250.000",
     priceNote: "420 m² · 4 suites",
     cta: "Agendar visita",
+    // ⚙️ CONVERSIÓN — edita estos valores con tus datos reales:
+    contact: {
+      whatsapp: "", // ← TU NÚMERO en formato internacional sin "+" (ej. "34600123123"). Vacío = modo demo.
+      phoneDisplay: "+34 910 240 361",
+      phoneHref: "tel:+34910240361",
+      ctaLabel: "Agendar visita",
+      headline: "Ven a verla este fin de semana",
+      sub: "Tour privado de 45 minutos con asesor. Déjanos tus datos y confirmamos tu visita hoy mismo.",
+    },
+    offer: { badge: "Fase 1 · Últimas 2 villas disponibles", unitsTotal: 6, unitsLeft: 2, deadline: "2026-11-30T23:59:59" },
+    rating: { value: "4.8", count: "96" },
+    testimonials: [
+      { stars: 5, text: "El tour virtual nos convenció y la visita nos enamoró. Escritura en 40 días, todo transparente.", name: "Elena y Marco", place: "Pozuelo" },
+      { stars: 5, text: "La domótica ya venía configurada a nuestro gusto el día de la entrega. Nivel de detalle brutal.", name: "David S.", place: "Madrid" },
+      { stars: 5, text: "Compramos sobre plano con miedo y fue la mejor decisión: nos avisaban de cada avance con fotos.", name: "Paula R.", place: "Boadilla" },
+    ],
+    trust: [
+      { icon: "🏦", title: "Hipoteca preaprobada", sub: "En 48 h con 3 bancos" },
+      { icon: "🥽", title: "Tour 360° + visita", sub: "Privada de 45 minutos" },
+      { icon: "🛡️", title: "Garantía 10 años", sub: "Estructura e instalaciones" },
+      { icon: "🔑", title: "Llave en mano", sub: "Equipada y configurada" },
+    ],
+    socialProof: [
+      { name: "Carmen D.", detail: "agendó visita el sábado", time: "hace 1 h" },
+      { name: "Roberto P.", detail: "pidió el tour 360°", time: "hace 4 h" },
+      { name: "Familia N.", detail: "reservó la villa 7", time: "esta semana" },
+    ],
     accent: "#2ecc71",
     totalFrames: 72,
     // Secuencia fotográfica real (verificada, alta resolución). El canvas
@@ -114,6 +168,33 @@ const PRODUCT_DATA = {
     price: "€2.499",
     priceNote: "16″ Mini-LED · 32 GB",
     cta: "Configurar la mía",
+    // ⚙️ CONVERSIÓN — edita estos valores con tus datos reales:
+    contact: {
+      whatsapp: "", // ← TU NÚMERO en formato internacional sin "+" (ej. "34600123123"). Vacío = modo demo.
+      phoneDisplay: "+34 910 240 362",
+      phoneHref: "tel:+34910240362",
+      ctaLabel: "Comprar ahora",
+      headline: "Estrénala esta semana",
+      sub: "Envío gratis en 24 h y 30 días de devolución. Déjanos tus datos y un especialista confirma tu configuración.",
+    },
+    offer: { badge: "Lanzamiento −15% + envío gratis 24 h", unitsTotal: 50, unitsLeft: 17, deadline: "2026-10-31T23:59:59" },
+    rating: { value: "4.9", count: "341" },
+    testimonials: [
+      { stars: 5, text: "Renderizo en Premiere mientras juego. 32 dB reales: mi micro por fin no capta los ventiladores.", name: "Iván G.", place: "Streamer · Sevilla" },
+      { stars: 5, text: "Compilo el monorepo en la mitad de tiempo que con mi sobremesa. La pantalla Mini-LED es otro nivel.", name: "Marta Q.", place: "Dev · Bilbao" },
+      { stars: 5, text: "La compré un lunes y el martes ya trabajaba con ella. Devolución de 30 días que no necesité.", name: "Hugo T.", place: "Diseñador 3D · Valencia" },
+    ],
+    trust: [
+      { icon: "↩️", title: "Devolución 30 días", sub: "Sin preguntas" },
+      { icon: "🛡️", title: "Garantía 3 años", sub: "Batería incluida" },
+      { icon: "🚀", title: "Envío 24 h gratis", sub: "Toda la península" },
+      { icon: "💳", title: "Pago a plazos", sub: "Hasta 24 meses" },
+    ],
+    socialProof: [
+      { name: "Alex M.", detail: "compró la config de 32 GB", time: "hace 3 h" },
+      { name: "Norma V.", detail: "la financió a 12 meses", time: "hace 6 h" },
+      { name: "Diego F.", detail: "jubila su sobremesa", time: "ayer" },
+    ],
     accent: "#7c5cff",
     totalFrames: 72,
     // Secuencia fotográfica real (verificada, alta resolución). El canvas
@@ -701,6 +782,18 @@ const ScrollEngine = (() => {
 
   /* Waypoints narrativos: cada tarjeta se revela al entrar al viewport. */
   function initWaypoints() {
+    // Sticky CTA: aparece al salir del hero, se oculta al volver arriba.
+    // (Se recrea con cada producto porque destroy() mata todos los triggers.)
+    const sticky = document.getElementById("stickyCta");
+    if (sticky) {
+      ScrollTrigger.create({
+        trigger: "#heroSection",
+        start: "bottom 65%",
+        end: "max",
+        onEnter: () => sticky.classList.add("is-visible"),
+        onLeaveBack: () => sticky.classList.remove("is-visible"),
+      });
+    }
     gsap.utils.toArray(".panel__card").forEach((card) => {
       gsap.fromTo(
         card,
@@ -731,6 +824,14 @@ const ScrollEngine = (() => {
     );
   }
 
+  /* Desplaza a un selector con Lenis (offset para la demo-bar fija). */
+  function scrollToEl(sel) {
+    const el = document.querySelector(sel);
+    if (!el) return;
+    if (lenis) lenis.scrollTo(el, { offset: -60, duration: 1.4 });
+    else el.scrollIntoView({ behavior: "smooth" });
+  }
+
   function scrollTop(instant) {
     if (lenis) {
       if (instant) lenis.scrollTo(0, { immediate: true });
@@ -750,7 +851,7 @@ const ScrollEngine = (() => {
     ScrollTrigger.refresh();
   }
 
-  return { initSmooth, initMaster, initWaypoints, destroy, rebuild, scrollTop };
+  return { initSmooth, initMaster, initWaypoints, destroy, rebuild, scrollTop, scrollToEl };
 })();
 
 /* ============================================================================
@@ -820,6 +921,209 @@ const App = (() => {
     document.querySelectorAll("[data-product-btn]").forEach((btn) => {
       btn.classList.toggle("is-active", btn.dataset.productBtn === product.id);
     });
+
+    renderConversion(product); // pack conversión: oferta, prueba social, lead, SEO
+  }
+
+  /* ---------- PACK CONVERSIÓN (100% data-driven) ----------
+     Rellena oferta, testimonios, confianza, captación y SEO desde
+     PRODUCT_DATA. Los temporizadores se registran en fxTimers para
+     limpiarlos al cambiar de producto. */
+  let fxTimers = [];
+  let toastCount = 0;
+  let leadBound = false;
+
+  function clearFx() {
+    fxTimers.forEach((t) => { clearTimeout(t); clearInterval(t); });
+    fxTimers = [];
+    toastCount = 0;
+    hideToast(true);
+  }
+
+  function renderConversion(product) {
+    // Cinta de oferta en el hero
+    const ribbon = document.getElementById("offerRibbon");
+    if (ribbon) {
+      if (product.offer && product.offer.badge) {
+        ribbon.hidden = false;
+        ribbon.textContent = "🔥 " + product.offer.badge;
+      } else ribbon.hidden = true;
+    }
+    // Sticky CTA inferior
+    const sp = document.getElementById("stickyPrice");
+    if (sp) sp.textContent = product.price;
+    const so = document.getElementById("stickyOffer");
+    if (so) so.textContent = product.offer ? product.offer.badge : "";
+    const sb = document.getElementById("stickyBtn");
+    if (sb) sb.textContent = product.contact.ctaLabel;
+    // Testimonios
+    const pg = document.getElementById("proofGrid");
+    if (pg) pg.innerHTML = product.testimonials.map((tm) =>
+      '<article class="proof-card"><div class="stars">' + "★".repeat(tm.stars) +
+      "</div><p>\u201C" + escapeHtml(tm.text) + "\u201D</p><footer><b>" +
+      escapeHtml(tm.name) + "</b> · " + escapeHtml(tm.place) + "</footer></article>"
+    ).join("");
+    // Sellos de confianza
+    const tr = document.getElementById("trustRow");
+    if (tr) tr.innerHTML = product.trust.map((t) =>
+      "<div><i>" + t.icon + "</i><div><b>" + escapeHtml(t.title) + "</b><span>" +
+      escapeHtml(t.sub) + "</span></div></div>"
+    ).join("");
+    // Bloque de captación
+    const lt = document.getElementById("leadTitle");
+    if (lt) lt.textContent = product.contact.headline;
+    const ls = document.getElementById("leadSub");
+    if (ls) ls.textContent = product.contact.sub;
+    const submit = document.getElementById("leadSubmit");
+    if (submit) submit.textContent = product.contact.ctaLabel;
+    const call = document.getElementById("leadCall");
+    if (call) { call.textContent = product.contact.phoneDisplay; call.href = product.contact.phoneHref; }
+    const okMsg = document.getElementById("leadSuccess");
+    if (okMsg) okMsg.hidden = true;
+    // Barra de stock (urgencia honesta: viene de tus datos)
+    if (product.offer) {
+      const pct = Math.round((product.offer.unitsLeft / product.offer.unitsTotal) * 100);
+      document.getElementById("stockFill").style.width = pct + "%";
+      document.getElementById("stockLabel").textContent =
+        "⚡ Quedan " + product.offer.unitsLeft + " de " + product.offer.unitsTotal + " disponibles";
+    }
+    updateSEO(product);
+    startCountdown(product);
+    scheduleToast(product);
+    if (!leadBound) { leadBound = true; bindLeadForm(); }
+  }
+
+  /* SEO dinámico: título + Open Graph/Twitter + JSON-LD Product por plantilla.
+     Al compartir el link en WhatsApp/Instagram se ve la tarjeta del producto. */
+  function updateSEO(product) {
+    const title = product.title + " " + product.titleThin + " — " + product.kicker;
+    document.title = title + " | Scrollytelling";
+    const setMeta = (sel, val) => {
+      const m = document.querySelector(sel);
+      if (m) m.setAttribute("content", val);
+    };
+    setMeta('meta[name="description"]', product.subtitle);
+    setMeta('meta[property="og:title"]', title);
+    setMeta('meta[property="og:description"]', product.subtitle);
+    if (product.images && product.images[0]) setMeta('meta[property="og:image"]', product.images[0]);
+    setMeta('meta[name="twitter:title"]', title);
+    setMeta('meta[name="twitter:description"]', product.subtitle);
+    const schema = document.getElementById("productSchema");
+    if (schema) {
+      schema.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: product.title + " " + product.titleThin,
+        description: product.subtitle,
+        image: product.images || [],
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: product.rating.value,
+          reviewCount: product.rating.count,
+        },
+        offers: {
+          "@type": "Offer",
+          priceCurrency: "EUR",
+          price: (product.price.match(/[\d.,]+/) || [""])[0],
+          availability: "https://schema.org/InStock",
+        },
+      });
+    }
+  }
+
+  /* Cuenta atrás de la oferta. Si la fecha ya pasó, se oculta sola. */
+  function startCountdown(product) {
+    const box = document.getElementById("countdownBox");
+    if (!box || !product.offer || !product.offer.deadline) {
+      if (box) box.style.display = "none";
+      return;
+    }
+    box.style.display = "";
+    const end = new Date(product.offer.deadline).getTime();
+    const tick = () => {
+      let d = Math.max(0, end - Date.now());
+      if (d === 0) { box.style.display = "none"; return; }
+      const dd = Math.floor(d / 864e5); d -= dd * 864e5;
+      const hh = Math.floor(d / 36e5); d -= hh * 36e5;
+      const mm = Math.floor(d / 6e4); d -= mm * 6e4;
+      const ss = Math.floor(d / 1e3);
+      document.getElementById("cdD").textContent = String(dd).padStart(2, "0");
+      document.getElementById("cdH").textContent = String(hh).padStart(2, "0");
+      document.getElementById("cdM").textContent = String(mm).padStart(2, "0");
+      document.getElementById("cdS").textContent = String(ss).padStart(2, "0");
+    };
+    tick();
+    fxTimers.push(setInterval(tick, 1000));
+  }
+
+  /* Formulario → WhatsApp con mensaje pre-rellenado (cero backend).
+     Sin número configurado muestra confirmación en modo demo. */
+  function bindLeadForm() {
+    const form = document.getElementById("leadForm");
+    if (!form) return;
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("leadName");
+      const phone = document.getElementById("leadPhone");
+      const okMsg = document.getElementById("leadSuccess");
+      let valid = true;
+      [name, phone].forEach((f) => {
+        const bad = !f.value.trim() || (f === phone && f.value.replace(/\D/g, "").length < 6);
+        f.classList.toggle("is-error", bad);
+        if (bad) valid = false;
+      });
+      if (!valid) return;
+      const product = PRODUCT_DATA[currentId];
+      const text = encodeURIComponent(
+        "Hola, soy " + name.value.trim() + ". Me interesa " + product.title + " " +
+        product.titleThin + " (" + product.price + "). ¿Me contactan al " + phone.value.trim() + "?"
+      );
+      if (product.contact.whatsapp) {
+        window.open("https://wa.me/" + product.contact.whatsapp + "?text=" + text, "_blank", "noopener");
+        okMsg.textContent = "✓ Abriendo WhatsApp… ¡hablamos en segundos!";
+      } else {
+        okMsg.textContent = "✓ ¡Gracias, " + name.value.trim() +
+          "! Te contactaremos hoy mismo. (Modo demo: configura contact.whatsapp en app.js)";
+      }
+      okMsg.hidden = false;
+      form.reset();
+    });
+  }
+
+  /* Toast de prueba social: rota tus casos desde PRODUCT_DATA.socialProof,
+     máx. 3 vistas por producto, se pausa si la pestaña está oculta. */
+  function scheduleToast(product) {
+    if (!product.socialProof || !product.socialProof.length) return;
+    const el = document.getElementById("proofToast");
+    if (el && !el.dataset.bound) {
+      el.dataset.bound = "1";
+      el.addEventListener("click", () => hideToast());
+    }
+    const queue = () => {
+      fxTimers.push(setTimeout(show, toastCount === 0 ? 9000 : 24000));
+    };
+    const show = () => {
+      if (toastCount >= 3 || document.hidden || !document.getElementById("proofToast")) { queue(); return; }
+      const item = product.socialProof[toastCount % product.socialProof.length];
+      const box = document.getElementById("proofToast");
+      box.innerHTML =
+        '<div class="toast__avatar">' + escapeHtml(item.name.trim().charAt(0)) + "</div><div><b>" +
+        escapeHtml(item.name) + " " + escapeHtml(item.detail) + "</b><span>" +
+        escapeHtml(item.time) + ' · <span class="stars">★★★★★</span></span></div>';
+      box.hidden = false;
+      requestAnimationFrame(() => box.classList.add("is-visible"));
+      toastCount++;
+      fxTimers.push(setTimeout(() => hideToast(), 6000));
+      queue();
+    };
+    queue();
+  }
+  function hideToast(hard) {
+    const el = document.getElementById("proofToast");
+    if (!el) return;
+    el.classList.remove("is-visible");
+    if (hard) el.hidden = true;
+    else setTimeout(() => { if (!el.classList.contains("is-visible")) el.hidden = true; }, 500);
   }
 
   function escapeHtml(str) {
@@ -839,6 +1143,7 @@ const App = (() => {
     opts = opts || {};
     if (switching || (id === currentId && !opts.force)) return;
     switching = true;
+    clearFx(); // detiene countdown/toast del producto anterior
     const product = PRODUCT_DATA[id];
     if (!product) { switching = false; return; }
 
@@ -886,6 +1191,16 @@ const App = (() => {
       if (e.key === "2") loadProduct("casa");
       if (e.key === "3") loadProduct("laptop");
     });
+    // Navegación suave a anclas (#contacto) respetando Lenis
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+      const sel = a.getAttribute("href");
+      if (sel.length > 1 && document.querySelector(sel)) {
+        e.preventDefault();
+        if (window.Scrolly.goTo) window.Scrolly.goTo(sel);
+      }
+    });
   }
 
   async function init() {
@@ -904,6 +1219,6 @@ const App = (() => {
 
   // API pública: permite reutilizar el framework desde consola u otro script
   // Ej: Scrolly.loadProduct("casa") · Scrolly.data
-  window.Scrolly = { loadProduct, data: PRODUCT_DATA };
+  window.Scrolly = { loadProduct, data: PRODUCT_DATA, goTo: ScrollEngine.scrollToEl };
   return { loadProduct };
 })();
