@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Estudio — Panel de edición Scrollytelling</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Estilos propios del Estudio (el resto viene de ../styles.css) */
+    body { background: #0a0a10; padding-bottom: 80px; }
+    .est-login { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+    .est-login__card { width: min(92vw, 380px); text-align: center; background: var(--card); border: 1px solid var(--stroke); border-radius: 24px; padding: 40px 32px; }
+    .est-login__card h1 { font-size: 26px; margin: 12px 0 6px; }
+    .est-login__card p { color: var(--text-dim); font-size: 14px; margin-bottom: 20px; }
+    .est-login__card input { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid var(--stroke); border-radius: 14px; padding: 13px 16px; color: #fff; font: inherit; margin-bottom: 12px; outline: none; }
+    .est-login__card input:focus { border-color: var(--accent); }
+    .est-login__err { color: #ff5d5d; font-size: 13px; min-height: 20px; margin-top: 8px; }
+    .est-bar { position: sticky; top: 0; z-index: 40; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 12px clamp(16px, 4vw, 40px); background: rgba(10,10,16,0.9); border-bottom: 1px solid var(--stroke); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+    .est-bar__brand { font-size: 12px; font-weight: 800; letter-spacing: 0.2em; margin-right: auto; }
+    .est-bar__brand span { color: var(--accent); }
+    .est-bar select { background: rgba(255,255,255,0.06); border: 1px solid var(--stroke); color: #fff; border-radius: 10px; padding: 9px 12px; font: inherit; font-size: 13px; }
+    .est-btn { border: 1px solid var(--stroke); background: rgba(255,255,255,0.06); border-radius: 10px; padding: 9px 14px; font-size: 13px; font-weight: 700; cursor: pointer; transition: background 0.2s; }
+    .est-btn:hover { background: rgba(255,255,255,0.12); }
+    .est-btn--primary { background: var(--accent); border-color: transparent; color: #fff; }
+    .est-btn--danger { color: #ff8a8a; }
+    .est-tabs { display: flex; gap: 8px; flex-wrap: wrap; padding: 18px clamp(16px, 4vw, 40px) 0; max-width: 980px; margin: 0 auto; }
+    .est-tab { border: 1px solid var(--stroke); background: transparent; border-radius: 999px; padding: 9px 18px; font-size: 13px; font-weight: 700; color: var(--text-dim); cursor: pointer; }
+    .est-tab.is-active { background: var(--accent-soft); border-color: var(--accent); color: #fff; }
+    .est-main { max-width: 980px; margin: 0 auto; padding: 18px clamp(16px, 4vw, 40px); }
+    .est-pane { display: none; }
+    .est-pane.is-active { display: block; }
+    .est-group { background: var(--card); border: 1px solid var(--stroke); border-radius: 18px; padding: 22px; margin-bottom: 16px; }
+    .est-group > h3 { font-size: 15px; margin-bottom: 4px; }
+    .est-group > p { font-size: 12.5px; color: var(--text-dim); margin-bottom: 16px; }
+    .est-field { margin-bottom: 12px; }
+    .est-field label { display: block; font-size: 11.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 6px; }
+    .est-field input[type="text"], .est-field input[type="number"], .est-field textarea, .est-field input[type="color"] { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--stroke); border-radius: 12px; padding: 11px 14px; color: #fff; font: inherit; font-size: 14px; outline: none; }
+    .est-field textarea { min-height: 76px; resize: vertical; font-family: "JetBrains Mono", monospace; font-size: 12.5px; }
+    .est-field textarea.tall { min-height: 170px; }
+    .est-field input:focus, .est-field textarea:focus { border-color: var(--accent); }
+    .est-field input[type="color"] { height: 44px; padding: 4px; cursor: pointer; }
+    .est-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .est-grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    @media (max-width: 720px) { .est-grid2, .est-grid3 { grid-template-columns: 1fr; } }
+    .est-status { position: fixed; bottom: 16px; left: 50%; transform: translate(-50%, 140%); z-index: 100; background: #101018; border: 1px solid var(--accent); border-radius: 999px; padding: 12px 24px; font-size: 14px; font-weight: 700; transition: transform 0.4s; max-width: 92vw; }
+    .est-status.is-visible { transform: translate(-50%, 0); }
+    .est-thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin-top: 12px; }
+    .est-thumbs img { width: 100%; height: 90px; object-fit: cover; border-radius: 10px; border: 1px solid var(--stroke); cursor: pointer; }
+    .est-thumbs img:hover { border-color: var(--accent); }
+    .est-import-preview { background: rgba(255,255,255,0.03); border: 1px dashed var(--stroke); border-radius: 14px; padding: 16px; margin-top: 12px; font-size: 13px; }
+    .est-import-preview img { max-width: 220px; border-radius: 10px; margin-top: 8px; }
+    .est-hint { font-size: 12px; color: var(--text-dim); background: rgba(255,197,49,0.07); border: 1px solid rgba(255,197,49,0.3); border-radius: 12px; padding: 12px 16px; margin-bottom: 16px; line-height: 1.6; }
+    .est-hint code { font-family: "JetBrains Mono", monospace; font-size: 11.5px; color: #ffc531; }
+  </style>
+</head>
+<body>
+
+  <!-- VISTA 1: acceso con clave (puerta blanda, ver admin.js) -->
+  <div class="est-login" id="loginView">
+    <div class="est-login__card">
+      <span class="demo-bar__dot" style="display:inline-block"></span>
+      <h1>SCROLLY <span style="color:var(--accent)">ESTUDIO</span></h1>
+      <p>Detrás de escenas: edita textos, fotos, ofertas y comparativas sin tocar código.</p>
+      <input type="password" id="loginPass" placeholder="Clave de acceso" autocomplete="current-password" />
+      <button class="btn btn--primary" id="loginBtn" type="button" style="width:100%">Entrar al Estudio</button>
+      <p class="est-login__err" id="loginErr"></p>
+      <p style="font-size:11.5px;margin-top:10px">¿Primera vez? La clave inicial es <code style="color:#ffc531">scrolly123</code> (cámbiala en <code>admin.js</code>).</p>
+    </div>
+  </div>
+
+  <!-- VISTA 2: panel de edición -->
+  <div id="studioView" hidden>
+    <header class="est-bar">
+      <span class="est-bar__brand">SCROLLY<span>ESTUDIO</span></span>
+      <select id="productSelect" aria-label="Producto en edición">
+        <option value="deportivo">🏎️ Superdeportivo</option>
+        <option value="casa">🏡 Casa Inteligente</option>
+        <option value="laptop">💻 Laptop Gamer</option>
+      </select>
+      <button class="est-btn est-btn--primary" id="saveBtn" type="button">💾 Guardar</button>
+      <a class="est-btn" href="../" target="_blank" rel="noopener">Ver landing ↗</a>
+      <a class="est-btn" href="../edicion-holograma/" target="_blank" rel="noopener">Ver holo ↗</a>
+      <button class="est-btn" id="exportBtn" type="button">Exportar</button>
+      <button class="est-btn" id="importBtn" type="button">Importar</button>
+      <button class="est-btn est-btn--danger" id="resetBtn" type="button">Restablecer</button>
+      <button class="est-btn" id="logoutBtn" type="button">Salir</button>
+      <input type="file" id="importFile" accept="application/json" hidden />
+    </header>
+
+    <nav class="est-tabs" id="estTabs">
+      <button class="est-tab is-active" data-tab="contenido" type="button">📝 Contenido</button>
+      <button class="est-tab" data-tab="comparativa" type="button">📊 Comparativa</button>
+      <button class="est-tab" data-tab="oferta" type="button">🎯 Oferta y contacto</button>
+      <button class="est-tab" data-tab="opiniones" type="button">⭐ Opiniones</button>
+      <button class="est-tab" data-tab="fotos" type="button">🖼️ Fotos</button>
+      <button class="est-tab" data-tab="importar" type="button">🌐 Importar web</button>
+    </nav>
+
+    <main class="est-main">
+      <div class="est-hint">Tus cambios se guardan en este navegador y la landing los aplica al recargar. Para hacerlos <b>públicos</b> en GitHub Pages pulsa <b>Exportar</b> y envíame el archivo <code>scrolly-contenido.json</code> (o pégame su contenido) y yo lo publico.</div>
+      <section class="est-pane is-active" data-pane="contenido" id="paneContenido"></section>
+      <section class="est-pane" data-pane="comparativa" id="paneComparativa"></section>
+      <section class="est-pane" data-pane="oferta" id="paneOferta"></section>
+      <section class="est-pane" data-pane="opiniones" id="paneOpiniones"></section>
+      <section class="est-pane" data-pane="fotos" id="paneFotos"></section>
+      <section class="est-pane" data-pane="importar" id="paneImportar"></section>
+    </main>
+  </div>
+
+  <div class="est-status" id="estStatus"></div>
+
+  <!-- CDNs (app.js los necesita) + datos/motores compartidos + panel -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="../app.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

@@ -43,6 +43,16 @@ const PRODUCT_DATA = {
     },
     offer: { badge: "Lanzamiento · Solo quedan 3 de 8 unidades", unitsTotal: 8, unitsLeft: 3, deadline: "2026-12-31T23:59:59" },
     rating: { value: "4.9", count: "214" },
+    comparison: {
+      title: "Vértice GT-R frente al segmento",
+      note: "Promedio de 6 superdeportivos híbridos 2025–2026 (datos de prensa especializada). Edítalo en el Estudio.",
+      metrics: [
+        { name: "Potencia", ours: 720, market: 560, unit: "CV", lowerBetter: false },
+        { name: "0–100 km/h", ours: 2.9, market: 3.6, unit: "s", lowerBetter: true },
+        { name: "Precio", ours: 190, market: 235, unit: "mil €", lowerBetter: true },
+        { name: "Garantía", ours: 4, market: 2, unit: "años", lowerBetter: false },
+      ],
+    },
     testimonials: [
       { stars: 5, text: "La prueba de 20 minutos me vendió el coche. El modo pista es de otro planeta y el asesor, impecable.", name: "Carlos M.", place: "Madrid" },
       { stars: 5, text: "Entrega en 3 semanas, tal como prometieron. El head-up display con telemetría es adictivo.", name: "Lucía F.", place: "Barcelona" },
@@ -111,6 +121,16 @@ const PRODUCT_DATA = {
     },
     offer: { badge: "Fase 1 · Últimas 2 villas disponibles", unitsTotal: 6, unitsLeft: 2, deadline: "2026-11-30T23:59:59" },
     rating: { value: "4.8", count: "96" },
+    comparison: {
+      title: "Casa Mirador frente a obra nueva premium",
+      note: "Muestra de 9 villas de +300 m² en la zona (portales inmobiliarios 2026). Edítalo en el Estudio.",
+      metrics: [
+        { name: "Superficie", ours: 420, market: 310, unit: "m²", lowerBetter: false },
+        { name: "Precio por m²", ours: 2976, market: 3850, unit: "€", lowerBetter: true },
+        { name: "Domótica incluida", ours: 100, market: 35, unit: "%", lowerBetter: false },
+        { name: "Garantía estructural", ours: 10, market: 5, unit: "años", lowerBetter: false },
+      ],
+    },
     testimonials: [
       { stars: 5, text: "El tour virtual nos convenció y la visita nos enamoró. Escritura en 40 días, todo transparente.", name: "Elena y Marco", place: "Pozuelo" },
       { stars: 5, text: "La domótica ya venía configurada a nuestro gusto el día de la entrega. Nivel de detalle brutal.", name: "David S.", place: "Madrid" },
@@ -179,6 +199,16 @@ const PRODUCT_DATA = {
     },
     offer: { badge: "Lanzamiento −15% + envío gratis 24 h", unitsTotal: 50, unitsLeft: 17, deadline: "2026-10-31T23:59:59" },
     rating: { value: "4.9", count: "341" },
+    comparison: {
+      title: "Nébula X16 Pro frente a la gama alta",
+      note: "8 laptops de creador/gaming 2026 del mismo rango de precio. Edítalo en el Estudio.",
+      metrics: [
+        { name: "Rendimiento CPU", ours: 32, market: 21, unit: "k pts", lowerBetter: false },
+        { name: "Batería real", ours: 22, market: 12, unit: "h", lowerBetter: false },
+        { name: "Peso", ours: 1.9, market: 2.4, unit: "kg", lowerBetter: true },
+        { name: "Precio 32 GB", ours: 2499, market: 2899, unit: "€", lowerBetter: true },
+      ],
+    },
     testimonials: [
       { stars: 5, text: "Renderizo en Premiere mientras juego. 32 dB reales: mi micro por fin no capta los ventiladores.", name: "Iván G.", place: "Streamer · Sevilla" },
       { stars: 5, text: "Compilo el monorepo en la mitad de tiempo que con mi sobremesa. La pantalla Mini-LED es otro nivel.", name: "Marta Q.", place: "Dev · Bilbao" },
@@ -969,6 +999,7 @@ const App = (() => {
       "<div><i>" + t.icon + "</i><div><b>" + escapeHtml(t.title) + "</b><span>" +
       escapeHtml(t.sub) + "</span></div></div>"
     ).join("");
+    renderComparison(product);
     // Bloque de captación
     const lt = document.getElementById("leadTitle");
     if (lt) lt.textContent = product.contact.headline;
@@ -991,6 +1022,48 @@ const App = (() => {
     startCountdown(product);
     scheduleToast(product);
     if (!leadBound) { leadBound = true; bindLeadForm(); }
+  }
+
+  /* Comparativa de mercado: barras Nuestro vs Promedio con veredicto
+     automático. La animación usa IntersectionObserver (coste casi nulo). */
+  let compareBound = false;
+  function renderComparison(product) {
+    const rows = document.getElementById("compareRows");
+    if (!rows || !product.comparison || !product.comparison.metrics) return;
+    document.getElementById("compareTitle").textContent = product.comparison.title;
+    document.getElementById("compareNote").textContent = product.comparison.note;
+    let wins = 0;
+    rows.innerHTML = product.comparison.metrics.map((m) => {
+      const max = Math.max(m.ours, m.market, 0.0001);
+      const win = m.lowerBetter ? m.ours < m.market : m.ours > m.market;
+      if (win) wins++;
+      return '<div class="cmp-row">' +
+        '<div class="cmp-head"><b>' + escapeHtml(m.name) + "</b>" +
+        (win ? '<span class="cmp-win">● NOSOTROS</span>' : '<span class="cmp-lose">○ MERCADO</span>') + "</div>" +
+        '<div class="cmp-line"><span>Nuestro</span><div class="cmp-bar"><i class="' + (win ? "is-win" : "") +
+        '" data-w="' + Math.round((m.ours / max) * 100) + '"></i></div><b>' +
+        m.ours + " " + escapeHtml(m.unit) + "</b></div>" +
+        '<div class="cmp-line dim"><span>Mercado</span><div class="cmp-bar"><i data-w="' +
+        Math.round((m.market / max) * 100) + '"></i></div><b>' +
+        m.market + " " + escapeHtml(m.unit) + "</b></div></div>";
+    }).join("");
+    const total = product.comparison.metrics.length;
+    document.getElementById("compareVerdict").textContent =
+      "✓ Ganamos en " + wins + " de " + total + " métricas · " + product.title + " " + product.titleThin;
+    const paint = () => {
+      rows.querySelectorAll(".cmp-bar i").forEach((bar) => { bar.style.width = bar.dataset.w + "%"; });
+    };
+    if (!compareBound) {
+      compareBound = true;
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) { paint(); io.unobserve(en.target); }
+        });
+      }, { threshold: 0.25 });
+      const sec = document.getElementById("comparativa");
+      if (sec) io.observe(sec);
+      else paint();
+    } else paint();
   }
 
   /* SEO dinámico: título + Open Graph/Twitter + JSON-LD Product por plantilla.
@@ -1203,7 +1276,35 @@ const App = (() => {
     });
   }
 
+  /* Personalización local: fusiona lo editado en el Estudio (localStorage)
+     sobre PRODUCT_DATA. Arrays se reemplazan, objetos se fusionan. */
+  function deepMerge(base, over) {
+    if (Array.isArray(over)) return over;
+    if (over && typeof over === "object" && base && typeof base === "object") {
+      const out = Object.assign({}, base);
+      Object.keys(over).forEach((k) => { out[k] = deepMerge(base[k], over[k]); });
+      return out;
+    }
+    return over === undefined ? base : over;
+  }
+  function applyOverrides() {
+    try {
+      const raw = localStorage.getItem("scrolly_overrides_v1");
+      if (!raw) return false;
+      const ov = JSON.parse(raw);
+      let n = 0;
+      Object.keys(ov).forEach((id) => {
+        if (PRODUCT_DATA[id] && ov[id] && typeof ov[id] === "object") {
+          PRODUCT_DATA[id] = deepMerge(PRODUCT_DATA[id], ov[id]);
+          n++;
+        }
+      });
+      return n > 0;
+    } catch (e) { console.warn("[Scrolly] overrides inválidos, se ignoran.", e); return false; }
+  }
+
   async function init() {
+    applyOverrides(); // el Estudio puede haber personalizado el contenido
     if (reduceMotion) {
       // Accesibilidad: sin suavizado agresivo si el usuario lo pide
       try { gsap.globalTimeline.timeScale(1); } catch (e) { /* noop */ }
@@ -1213,9 +1314,13 @@ const App = (() => {
     await loadProduct(currentId, { force: true, silent: true });
   }
 
+  // Solo auto-arranca la landing si existe su contenedor. Así el Estudio
+  // (/estudio/) puede cargar este mismo app.js para reutilizar PRODUCT_DATA
+  // sin ejecutar el render del showcase.
+  const bootLanding = () => { if (document.getElementById("scrollContent")) init(); };
   document.readyState === "loading"
-    ? document.addEventListener("DOMContentLoaded", init)
-    : init();
+    ? document.addEventListener("DOMContentLoaded", bootLanding)
+    : bootLanding();
 
   // API pública: permite reutilizar el framework desde consola u otro script
   // Ej: Scrolly.loadProduct("casa") · Scrolly.data
