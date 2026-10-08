@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Framework scrollytelling data-driven estilo Apple — Canvas 60FPS + GSAP + Lenis" />
+  <title>Scrollytelling Framework — Showcase Interactivo</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body data-product="deportivo">
+
+  <!-- Barra de progreso de scroll (waypoint global) -->
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgressBar"></span></div>
+
+  <!-- Panel de control flotante: Modo Demostración / Test -->
+  <header class="demo-bar" role="banner">
+    <div class="demo-bar__brand">
+      <span class="demo-bar__dot" id="demoDot"></span>
+      <span class="demo-bar__name">SCROLLY<span>FRAMEWORK</span></span>
+    </div>
+    <nav class="demo-bar__switcher" aria-label="Selector de producto de demostración">
+      <button class="demo-btn is-active" data-product-btn="deportivo" type="button">
+        <span class="demo-btn__icon" aria-hidden="true">🏎️</span> Superdeportivo
+      </button>
+      <button class="demo-btn" data-product-btn="casa" type="button">
+        <span class="demo-btn__icon" aria-hidden="true">🏡</span> Casa Inteligente
+      </button>
+      <button class="demo-btn" data-product-btn="laptop" type="button">
+        <span class="demo-btn__icon" aria-hidden="true">💻</span> Laptop Gamer
+      </button>
+    </nav>
+    <div class="demo-bar__meta">
+      <span id="frameCounter" class="frame-counter">FOTO 01 / 05</span>
+    </div>
+  </header>
+
+  <!-- Preloader / buffer de assets -->
+  <div class="preloader" id="preloader" role="status" aria-live="polite">
+    <div class="preloader__card">
+      <p class="preloader__kicker" id="preloaderKicker">CARGANDO SECUENCIA</p>
+      <h2 class="preloader__title" id="preloaderTitle">Superdeportivo GT-R</h2>
+      <div class="preloader__bar"><span id="preloaderBar"></span></div>
+      <p class="preloader__pct" id="preloaderPct">0%</p>
+      <p class="preloader__hint">Descargando fotografía en alta resolución…</p>
+    </div>
+  </div>
+
+  <!-- Canvas pinneado: capa de fondo fija (z-index 0) -->
+  <div class="stage" aria-hidden="true">
+    <canvas id="scrollyCanvas"></canvas>
+    <div class="stage__vignette"></div>
+    <div class="stage__grain"></div>
+  </div>
+
+  <!-- Crédito de fotografía -->
+  <div class="photo-credit" id="photoCredit">Fotografía · Unsplash</div>
+
+  <!-- Contenido narrativo por encima del canvas (z-index 10) -->
+  <main class="scroll-content" id="scrollContent">
+
+    <!-- HERO: se renderiza desde PRODUCT_DATA -->
+    <section class="hero" id="heroSection">
+      <p class="kicker" id="heroKicker"></p>
+      <h1 class="hero__title" id="heroTitle"></h1>
+      <p class="hero__subtitle" id="heroSubtitle"></p>
+      <div class="hero__cta-row">
+        <a class="btn btn--primary" href="#narrativa" id="heroCta"></a>
+        <span class="hero__price" id="heroPrice"></span>
+      </div>
+      <div class="hero__specs" id="heroSpecs"></div>
+      <div class="scroll-hint" aria-hidden="true">
+        <span class="scroll-hint__mouse"><span></span></span>
+        <em>Desliza para explorar</em>
+      </div>
+    </section>
+
+    <!-- NARRATIVA: waypoints generados dinámicamente desde PRODUCT_DATA.sections -->
+    <div class="narrative" id="narrative"></div>
+
+    <!-- SPECS FINALES + FOOTER -->
+    <section class="finale" id="finaleSection">
+      <div class="finale__card">
+        <p class="kicker">Ficha técnica</p>
+        <h2 id="finaleTitle"></h2>
+        <dl class="finale__grid" id="finaleGrid"></dl>
+        <div class="finale__actions">
+          <button class="btn btn--primary" type="button" id="replayBtn">↻ Repetir experiencia</button>
+          <button class="btn btn--ghost" type="button" id="nextProductBtn">Siguiente producto →</button>
+        </div>
+      </div>
+      <footer class="footer">
+        <p>Scrollytelling Framework · Canvas 2D + GSAP ScrollTrigger + Lenis · 60 FPS · Fotografía: Unsplash</p>
+      </footer>
+    </section>
+
+  </main>
+
+  <!-- CDNs oficiales -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
